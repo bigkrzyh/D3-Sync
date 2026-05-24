@@ -19,6 +19,60 @@ Você pode apontar isso para o AppIcon-Light.png gerado mais tarde
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
 <a href="support.html">Support</a>
+
+<div class="lang-switcher" style="display:inline-block; margin-left: 1rem;">
+    🌐 <select onchange="switchLanguage(this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: inherit; padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; cursor: pointer;">
+<option style="color: black;" value="">English</option>
+<option style="color: black;" value="de">Deutsch</option>
+<option style="color: black;" value="es">Español</option>
+<option style="color: black;" value="fr">Français</option>
+<option style="color: black;" value="it">Italiano</option>
+<option style="color: black;" value="ja">日本語</option>
+<option style="color: black;" value="pl">Polski</option>
+<option style="color: black;" value="pt-BR">Português</option>
+<option style="color: black;" value="ru">Русский</option>
+<option style="color: black;" value="zh-Hans">简体中文</option>
+</select>
+</div>
+<script>
+function switchLanguage(lang) {
+    var path = window.location.pathname;
+    var file = path.split('/').pop() || 'index.html';
+    // Remove current language prefix if exists
+    var langs = ['/de/', '/es/', '/fr/', '/it/', '/ja/', '/pl/', '/pt-BR/', '/ru/', '/zh-Hans/'];
+    var isSubdir = false;
+    for (var i = 0; i < langs.length; i++) {
+        if (path.indexOf(langs[i]) !== -1) {
+            path = path.replace(langs[i], '/');
+            isSubdir = true;
+            break;
+        }
+    }
+    
+    // Determine the base path (e.g. /D3-Sync/)
+    var base = path.substring(0, path.lastIndexOf('/') + 1);
+    
+    if (lang) {
+        window.location.href = base + lang + '/' + file;
+    } else {
+        window.location.href = base + file;
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname;
+    var selectObj = document.querySelector('.lang-switcher select');
+    if (selectObj) {
+        var found = false;
+        ['de', 'es', 'fr', 'it', 'ja', 'pl', 'pt-BR', 'ru', 'zh-Hans'].forEach(function(l) {
+            if (currentPath.indexOf('/' + l + '/') !== -1) {
+                selectObj.value = l;
+                found = true;
+            }
+        });
+        if (!found) selectObj.value = "";
+    }
+});
+</script>
 </nav>
 </header>
 <main class="container">

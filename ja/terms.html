@@ -1,0 +1,97 @@
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>利用規約 | D3-Sync</title>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/favicon.png" rel="icon" type="image/png"/><link href="../assets/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<header>
+<a class="logo" href="index.html"><div style="width:40px; height:40px; background:linear-gradient(135deg, #FF8A00, #FFD15C); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">D3</div> D3-Sync</a>
+<nav>
+<a href="index.html">Home</a>
+<a href="privacy.html">Privacy</a>
+<a class="active" href="terms.html">Terms</a>
+<a href="support.html">Support</a>
+<div class="lang-switcher" style="display:inline-block; margin-left: 1rem;">
+    🌐 <select onchange="switchLanguage(this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: inherit; padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; cursor: pointer;">
+<option style="color: black;" value="">英語</option>
+<option style="color: black;" value="de">ドイツ語</option>
+<option style="color: black;" value="es">スペイン語</option>
+<option style="color: black;" value="fr">フランセ</option>
+<option style="color: black;" value="it">イタリアーノ</option>
+<option style="color: black;" value="ja">日本語</option>
+<option style="color: black;" value="pl">ポルスキー</option>
+<option style="color: black;" value="pt-BR">ポルトガル語</option>
+<option style="color: black;" value="ru">Русский</option>
+<option style="color: black;" value="zh-Hans">简体中文</option>
+</select>
+</div>
+<script>
+function switchLanguage(lang) {
+    var path = window.location.pathname;
+    var file = path.split('/').pop() || 'index.html';
+    // Remove current language prefix if exists
+    var langs = ['/de/', '/es/', '/fr/', '/it/', '/ja/', '/pl/', '/pt-BR/', '/ru/', '/zh-Hans/'];
+    var isSubdir = false;
+    for (var i = 0; i < langs.length; i++) {
+        if (path.indexOf(langs[i]) !== -1) {
+            path = path.replace(langs[i], '/');
+            isSubdir = true;
+            break;
+        }
+    }
+    
+    // Determine the base path (e.g. /D3-Sync/)
+    var base = path.substring(0, path.lastIndexOf('/') + 1);
+    
+    if (lang) {
+        window.location.href = base + lang + '/' + file;
+    } else {
+        window.location.href = base + file;
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname;
+    var selectObj = document.querySelector('.lang-switcher select');
+    if (selectObj) {
+        var found = false;
+        ['de', 'es', 'fr', 'it', 'ja', 'pl', 'pt-BR', 'ru', 'zh-Hans'].forEach(function(l) {
+            if (currentPath.indexOf('/' + l + '/') !== -1) {
+                selectObj.value = l;
+                found = true;
+            }
+        });
+        if (!found) selectObj.value = "";
+    }
+});
+</script>
+</nav>
+</header>
+<main class="container">
+<section class="glass-card doc-content">
+<h1>利用規約 (EULA)</h1>
+<p>最終更新日: 2026 年 5 月 24 日</p>
+<h2>1. 規約への同意</h2>
+<p>D3-Sync アプリをダウンロードまたは使用すると、これらの規約が自動的に適用されます。したがって、アプリを使用する前に必ずそれらをよく読んでください。</p>
+<h2>2. 医療上の免責事項</h2>
+<p><strong>D3-Sync は医療機器ではありません。</strong>ビタミン D3 合成の計算は、UV インデックス、肌タイプ、曝露時間に関する科学的モデルに基づいた推定値です。このアプリは医学的なアドバイス、診断、治療を提供するものではありません。健康法や日光への曝露習慣を変える前に、必ず資格のある医療専門家に相談して医学的アドバイスを求めてください。</p>
+<h2>3. サブスクリプション（プロ版）</h2>
+<p>D3-Sync の一部の機能は、サブスクリプション ベース (「プロ」) で提供される場合があります。</p>
+<ul>
+<li>購入の確認時に、お支払いは Apple ID アカウントに請求されます。</li>
+<li>現在の期間が終了する少なくとも 24 時間前にキャンセルされない限り、サブスクリプションは自動的に更新されます。</li>
+<li>購入後に App Store のアカウント設定に移動して、サブスクリプションを管理およびキャンセルできます。</li>
+</ul>
+<h2>4. 本契約の変更</h2>
+<p>当社は利用規約を随時更新することがあります。したがって、変更がないか定期的にこのページを確認することをお勧めします。変更があった場合は、このページに新しい利用規約を掲載することでお知らせします。</p>
+<h2>5. お問い合わせ</h2>
+<p>当社の利用規約に関してご質問やご提案がございましたら、お気軽にお問い合わせください。<a href="support.html">お問い合わせ</a>。</p>
+</section>
+</main>
+<footer>
+<p>© 2026 D3-Sync.無断転載を禁じます。</p>
+</footer>
+</body>
+</html>

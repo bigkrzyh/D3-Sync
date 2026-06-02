@@ -1,0 +1,101 @@
+HTML
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Política de Privacidade | Sincronização D3</title>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/favicon.png" rel="icon" type="image/png"/><link href="../assets/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<header>
+<a class="logo" href="index.html"><div style="width:40px; height:40px; background:linear-gradient(135deg, #FF8A00, #FFD15C); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">D3</div> D3-Sync</a>
+<nav>
+<a href="index.html">Home</a>
+<a class="active" href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="support.html">Support</a>
+<div class="lang-switcher" style="display:inline-block; margin-left: 1rem;">
+    🌐 <select onchange="switchLanguage(this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: inherit; padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; cursor: pointer;">
+<option style="color: black;" value="">Inglês</option>
+<option style="color: black;" value="de">Alemão</option>
+<option style="color: black;" value="es">Espanhol</option>
+<option style="color: black;" value="fr">Francês</option>
+<option style="color: black;" value="it">Italiano</option>
+<option style="color: black;" value="ja">日本語</option>
+<option style="color: black;" value="pl">Polaco</option>
+<option style="color: black;" value="pt-BR">Português</option>
+<option style="color: black;" value="ru">Russo</option>
+<option style="color: black;" value="zh-Hans">简体中文</option>
+</select>
+</div>
+<script>
+function switchLanguage(lang) {
+    var path = window.location.pathname;
+    var file = path.split('/').pop() || 'index.html';
+    // Remove current language prefix if exists
+    var langs = ['/de/', '/es/', '/fr/', '/it/', '/ja/', '/pl/', '/pt-BR/', '/ru/', '/zh-Hans/'];
+    var isSubdir = false;
+    for (var i = 0; i < langs.length; i++) {
+        if (path.indexOf(langs[i]) !== -1) {
+            path = path.replace(langs[i], '/');
+            isSubdir = true;
+            break;
+        }
+    }
+    
+    // Determine the base path (e.g. /D3-Sync/)
+    var base = path.substring(0, path.lastIndexOf('/') + 1);
+    
+    if (lang) {
+        window.location.href = base + lang + '/' + file;
+    } else {
+        window.location.href = base + file;
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname;
+    var selectObj = document.querySelector('.lang-switcher select');
+    if (selectObj) {
+        var found = false;
+        ['de', 'es', 'fr', 'it', 'ja', 'pl', 'pt-BR', 'ru', 'zh-Hans'].forEach(function(l) {
+            if (currentPath.indexOf('/' + l + '/') !== -1) {
+                selectObj.value = l;
+                found = true;
+            }
+        });
+        if (!found) selectObj.value = "";
+    }
+});
+</script>
+</nav>
+</header>
+<main class="container">
+<section class="glass-card doc-content">
+<h1>política de Privacidade</h1>
+<p>Última atualização: 24 de maio de 2026</p>
+<h2>1. Introdução</h2>
+<p>A D3-Sync (“nós”, “nosso” ou “nos”) respeita a sua privacidade e está comprometida em proteger os seus dados pessoais. Esta política de privacidade informa sobre como coletamos, usamos e cuidamos de seus dados pessoais quando você usa nosso aplicativo iOS e watchOS, em conformidade com as diretrizes do Apple App Store Connect.</p>
+<h2>2. Coleta e uso de dados</h2>
+<p>Coletamos e usamos os seguintes tipos de dados exclusivamente para fornecer a funcionalidade principal do aplicativo:</p>
+<ul>
+<li><strong>Dados de saúde (Apple HealthKit):</strong>O D3-Sync integra-se ao Apple Health (HealthKit) para ler e registrar seus níveis dietéticos de vitamina D, bem como ler seu tipo de pele Fitzpatrick.<strong>Todos os dados de saúde são armazenados com segurança no seu dispositivo e no seu iCloud pessoal. Não transmitimos, coletamos ou armazenamos seus dados de saúde em nossos próprios servidores.</strong>Os dados são utilizados exclusivamente para exibir seu progresso diário e manter seu perfil de Saúde atualizado. Não usamos esses dados para marketing, publicidade ou mineração de dados.</li>
+<li><strong>Dados de localização:</strong>Para calcular com precisão a exposição UV, o aplicativo solicita acesso à sua localização. Os dados de localização são enviados anonimamente ao Apple WeatherKit para obter o índice UV local. Não rastreamos nem armazenamos seu histórico de localização em servidores externos. O rastreamento passivo depende inteiramente da cerca geográfica local do iOS.</li>
+<li><strong>Tokens de notificação push:</strong>Se você ativar o rastreamento passivo, um token de dispositivo anônimo será gerado para enviar notificações push silenciosas em segundo plano para ativar o aplicativo para cálculos locais. Nenhum dado pessoal ou de saúde está anexado a este token.</li>
+</ul>
+<h2>3. Retenção e exclusão de dados</h2>
+<p>Como os seus dados de saúde e localização são armazenados localmente no seu dispositivo, não retemos nenhum desses dados nos nossos servidores. Você tem controle total sobre seus dados:</p>
+<ul>
+<li>Você pode excluir seus dados de saúde diretamente pelo aplicativo Apple Health a qualquer momento.</li>
+<li>Você pode revogar as permissões de localização e HealthKit nas configurações do iOS a qualquer momento.</li>
+</ul>
+<h2>4. Serviços de terceiros</h2>
+<p>Não vendemos, comercializamos ou transferimos de outra forma suas informações de identificação pessoal para terceiros. O aplicativo se comunica apenas com serviços fornecidos pela Apple (WeatherKit, HealthKit, CloudKit) para funcionar.</p>
+<h2>5. Contate-nos</h2>
+<p>Se você tiver alguma dúvida sobre esta política de privacidade ou sobre seus direitos de dados, por favor<a href="support.html">entre em contato com nossa equipe de suporte</a>.</p>
+</section>
+</main>
+<footer>
+<p>© 2026 D3-Sync. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>

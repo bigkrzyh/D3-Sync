@@ -1,0 +1,101 @@
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>プライバシーポリシー | D3-Sync</title>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/favicon.png" rel="icon" type="image/png"/><link href="../assets/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<header>
+<a class="logo" href="index.html"><div style="width:40px; height:40px; background:linear-gradient(135deg, #FF8A00, #FFD15C); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">D3</div> D3-Sync</a>
+<nav>
+<a href="index.html">Home</a>
+<a class="active" href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="support.html">Support</a>
+<div class="lang-switcher" style="display:inline-block; margin-left: 1rem;">
+    🌐 <select onchange="switchLanguage(this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: inherit; padding: 4px 8px; border-radius: 6px; font-size: 0.9rem; cursor: pointer;">
+<option style="color: black;" value="">英語</option>
+<option style="color: black;" value="de">ドイツ語</option>
+<option style="color: black;" value="es">スペイン語</option>
+<option style="color: black;" value="fr">フランセ</option>
+<option style="color: black;" value="it">イタリアーノ</option>
+<option style="color: black;" value="ja">日本語</option>
+<option style="color: black;" value="pl">ポルスキー</option>
+<option style="color: black;" value="pt-BR">ポルトガル語</option>
+<option style="color: black;" value="ru">Русский</option>
+<option style="color: black;" value="zh-Hans">简体中文</option>
+</select>
+</div>
+<script>
+function switchLanguage(lang) {
+    var path = window.location.pathname;
+    var file = path.split('/').pop() || 'index.html';
+    // Remove current language prefix if exists
+    var langs = ['/de/', '/es/', '/fr/', '/it/', '/ja/', '/pl/', '/pt-BR/', '/ru/', '/zh-Hans/'];
+    var isSubdir = false;
+    for (var i = 0; i < langs.length; i++) {
+        if (path.indexOf(langs[i]) !== -1) {
+            path = path.replace(langs[i], '/');
+            isSubdir = true;
+            break;
+        }
+    }
+    
+    // Determine the base path (e.g. /D3-Sync/)
+    var base = path.substring(0, path.lastIndexOf('/') + 1);
+    
+    if (lang) {
+        window.location.href = base + lang + '/' + file;
+    } else {
+        window.location.href = base + file;
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var currentPath = window.location.pathname;
+    var selectObj = document.querySelector('.lang-switcher select');
+    if (selectObj) {
+        var found = false;
+        ['de', 'es', 'fr', 'it', 'ja', 'pl', 'pt-BR', 'ru', 'zh-Hans'].forEach(function(l) {
+            if (currentPath.indexOf('/' + l + '/') !== -1) {
+                selectObj.value = l;
+                found = true;
+            }
+        });
+        if (!found) selectObj.value = "";
+    }
+});
+</script>
+</nav>
+</header>
+<main class="container">
+<section class="glass-card doc-content">
+<h1>プライバシーポリシー</h1>
+<p>最終更新日: 2026 年 5 月 24 日</p>
+<h2>1. はじめに</h2>
+<p>D3-Sync (「当社」、「弊社」、または「当社」) はお客様のプライバシーを尊重し、お客様の個人データの保護に努めています。このプライバシー ポリシーでは、Apple App Store Connect ガイドラインに従って、お客様が iOS および watchOS アプリケーションを使用する際に、当社がお客様の個人データをどのように収集、使用、管理するかについて説明します。</p>
+<h2>2. データの収集と使用</h2>
+<p>当社は、アプリのコア機能を提供するためにのみ、次の種類のデータを収集および使用します。</p>
+<ul>
+<li><strong>健康データ (Apple HealthKit):</strong>D3-Sync は Apple Health (HealthKit) と統合し、食事のビタミン D レベルを読み書きしたり、フィッツパトリックの肌タイプを読み取ったりします。<strong>すべての健康データは、デバイスと個人用 iCloud に安全に保存されます。当社は、お客様の健康データを当社独自のサーバーに送信、収集、保存することはありません。</strong>データは、毎日の進捗状況を表示し、健康プロフィールを最新の状態に保つためにのみ使用されます。当社はこのデータをマーケティング、広告、またはデータマイニングに使用しません。</li>
+<li><strong>位置データ:</strong>紫外線曝露量を正確に計算するために、アプリはあなたの位置情報へのアクセスを要求します。位置データは匿名で Apple WeatherKit に送信され、ローカルの UV インデックスを取得します。当社は、お客様の位置履歴を追跡したり、外部サーバーに保存したりすることはありません。パッシブ トラッキングは、ローカル iOS ジオフェンシングに完全に依存しています。</li>
+<li><strong>プッシュ通知トークン:</strong>パッシブ トラッキングを有効にすると、匿名デバイス トークンが生成され、サイレント バックグラウンド プッシュ通知が送信され、ローカル計算のためにアプリが起動されます。このトークンには個人データや健康データは添付されません。</li>
+</ul>
+<h2>3. データの保持と削除</h2>
+<p>あなたの健康と位置データはあなたのデバイスにローカルに保存されるため、当社はこのデータを当社のサーバーに保持しません。データを完全に制御できます。</p>
+<ul>
+<li>健康データは、Apple Health アプリからいつでも直接削除できます。</li>
+<li>iOS 設定でいつでも位置情報と HealthKit のアクセス許可を取り消すことができます。</li>
+</ul>
+<h2>4. サードパーティサービス</h2>
+<p>当社は、お客様の個人を特定できる情報を外部の第三者に販売、取引、またはその他の方法で転送することはありません。アプリは Apple が提供するサービス (WeatherKit、HealthKit、CloudKit) と通信してのみ機能します。</p>
+<h2>5. お問い合わせ</h2>
+<p>このプライバシー ポリシーまたはデータの権利についてご質問がある場合は、お問い合わせください。<a href="support.html">サポートチームにお問い合わせください</a>。</p>
+</section>
+</main>
+<footer>
+<p>© 2026 D3-Sync.無断転載を禁じます。</p>
+</footer>
+</body>
+</html>
